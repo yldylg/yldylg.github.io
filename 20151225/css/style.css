@@ -1,0 +1,159 @@
+/*
+ file: style.css
+ author: yanglei
+*/
+
+@font-face {
+    font-family: Speedline;
+    src: url('Speedline.ttf') format("truetype");
+}
+
+body {
+    background-image: url(../images/bg.jpg);
+    background-color: #652404;
+    overflow: hidden;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 30px;
+}
+
+#code {
+    margin-top: 20px;
+    margin-right: 60px;
+    padding: 32px;
+    width: 650px;
+    height: 450px;
+    border: 2px solid #efefef;
+    position: relative;
+    float: right;
+    background: #ffffb0;
+    /* old browsers */
+    line-height: 37px;
+    /*background-image:url(images/singlecustom.png);*/
+    display: none;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.3) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.3) inset;
+    -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.3) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.3) inset;
+}
+
+#code:before {
+    z-index: -2;
+    position: absolute;
+    background: transparent;
+    width: 90%;
+    height: 80%;
+    content: '';
+    left: 27px;
+    bottom: 17px;
+    -webkit-transform: skew(-12deg) rotate(-4deg);
+    -moz-transform: skew(-12deg) rotate(-4deg);
+    -o-transform: skew(-12deg) rotate(-4deg);
+    -ms-transform: skew(-12deg) rotate(-4deg);
+    -webkit-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+}
+
+#code:after {
+    z-index: -1;
+    position: absolute;
+    background: transparent;
+    width: 90%;
+    height: 80%;
+    content: '';
+    right: 27px;
+    bottom: 17px;
+    -webkit-transform: skew(12deg) rotate(4deg);
+    -moz-transform: skew(12deg) rotate(4deg);
+    -o-transform: skew(12deg) rotate(4deg);
+    -ms-transform: skew(12deg) rotate(4deg);
+    -webkit-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
+}
+
+#code {
+    color: #210097;
+    font-family: "Speedline";
+    font-style: italic;
+    font-size: 25px;
+}
+
+#code .format {
+    color: #7f0055;
+}
+
+#code .bold {
+    font-weight: bold;
+}
+
+#code .space2 {
+    margin-left: 50px;
+}
+
+#code .Christmas {
+    font-style: normal;
+    font-size: 30px;
+    line-height: 45px;
+    color: #b00080;
+}
+
+#end {
+    float: right;
+    width: 200px;
+    color: #7f0055;
+}
+
+#Christmas {
+    top: 55px;
+    right: 100px;
+    padding-top: 42px;
+    width: 650px;
+    height: 450px;
+    position: absolute;
+    float: right;
+    font-family: "Speedline";
+    color: #ff4030;
+    font-size: 80px;
+    line-height: 160px;
+    display: none;
+}
+
+@media screen and (max-width:760px) {
+    * {
+        font-size: 1.2em;
+    }
+    body {
+        background-image: url(../images/bg760.jpg);
+    }
+    #code {
+        margin-top: 1em;
+        margin-right: 2em;
+        padding: 12px;
+        width: 90%;
+        height: 330px;
+        font-size: .8em;
+        line-height: 1em;
+    }
+    #Christmas {
+        margin: auto;
+        text-align: center;
+        float: left;
+        top: 1em;
+        right: 2em;
+        padding-top: 1em;
+        width: 400px;
+        height: 220px;
+        font-size: 1.8em;
+        line-height: 1.8em;
+    }
+}
