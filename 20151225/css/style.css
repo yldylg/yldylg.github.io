@@ -7,22 +7,29 @@
     font-family: Speedline;
     src: url('Speedline.ttf') format("truetype");
 }
-
+html,
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
 body {
     background-image: url(../images/bg.jpg);
     background-color: #652404;
     overflow: hidden;
     background-size: 100%;
-    background-repeat: no-repeat;
+    overflow: hidden;
 }
-
 #container {
     width: 100%;
     height: 100%;
     position: absolute;
     padding: 30px;
 }
-
 #code {
     margin-top: 20px;
     margin-right: 60px;
@@ -42,7 +49,6 @@ body {
     -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.3) inset;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.3) inset;
 }
-
 #code:before {
     z-index: -2;
     position: absolute;
@@ -61,7 +67,6 @@ body {
     -o-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
     box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
 }
-
 #code:after {
     z-index: -1;
     position: absolute;
@@ -80,39 +85,32 @@ body {
     -o-box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
     box-shadow: 0 25px 72px rgba(0, 0, 0, 0.5);
 }
-
 #code {
     color: #210097;
     font-family: "Speedline";
     font-style: italic;
     font-size: 25px;
 }
-
 #code .format {
     color: #7f0055;
 }
-
 #code .bold {
     font-weight: bold;
 }
-
 #code .space2 {
     margin-left: 50px;
 }
-
 #code .Christmas {
     font-style: normal;
     font-size: 30px;
     line-height: 45px;
     color: #b00080;
 }
-
 #end {
     float: right;
     width: 200px;
     color: #7f0055;
 }
-
 #Christmas {
     top: 55px;
     right: 100px;
@@ -127,8 +125,7 @@ body {
     line-height: 160px;
     display: none;
 }
-
-@media screen and (max-width:760px) {
+@media screen and (max-width: 760px) {
     * {
         font-size: 1.2em;
     }
