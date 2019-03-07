@@ -7,7 +7,7 @@ var settings = {
         duration: 2, // particle duration in sec
         velocity: 100, // particle velocity in pixels/sec
         effect: -0.75, // play with this for a nice effect
-        size: 30, // particle size in pixels
+        size: 60, // particle size in pixels
     },
 };
 
