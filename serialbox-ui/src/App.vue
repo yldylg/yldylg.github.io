@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <mt-header title="long long long long title">
+    <mt-header title="测试">
       <router-link to="/" slot="left">
         <mt-button icon="back">back</mt-button>
       </router-link>
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
-    <router-view/>
+    <div style="margin-top: 40px;">
+      <router-view/>
+    </div>
   </div>
 </template>
 
