@@ -1,36 +1,32 @@
 <template>
-  <!-- <div class="hello">
-    <mt-button type="default">default</mt-button>
-    <mt-button type="primary">primary</mt-button>
-    <mt-button type="danger">danger</mt-button>
-  </div>-->
   <div>
-    <div ref="term" class="term"></div>
+    <div class="term" ref="term"></div>
   </div>
 </template>
 
 <script>
 import { Terminal } from 'xterm'
+import 'xterm/dist/xterm.css'
 import * as fit from 'xterm/lib/addons/fit/fit'
 
 export default {
   name: 'Term',
-  data () {
+  data() {
     return {
-        terminal: new Terminal({
-            // cols: 80,
-            // rows: 120,
-            // cursorBlink: true, // 光标闪烁
-            // cursorStyle: "block", // 光标样式  null | 'block' | 'underline' | 'bar'
-            // scrollback: 800, //回滚
-            // tabStopWidth: 8, //制表宽度
-            // screenKeys: true,
-            // textarea: false
-        })
+      terminal: new Terminal({
+        cols: 80,
+        rows: 120,
+        cursorBlink: true, // 光标闪烁
+        cursorStyle: 'bar', // 光标样式  null | 'block' | 'underline' | 'bar'
+        scrollback: 800, // 回滚
+        tabStopWidth: 8, // 制表宽度
+        screenKeys: true,
+        textarea: false
+      })
     }
   },
   methods: {
-    openTerminal () {
+    openTerminal() {
       this.terminal.open(this.$refs.term)
       this.terminal.fit()
       this.terminal.prompt = () => {
@@ -39,7 +35,7 @@ export default {
       this.terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
     }
   },
-  created () {
+  created() {
     Terminal.applyAddon(fit)
     this.openTerminal()
   }

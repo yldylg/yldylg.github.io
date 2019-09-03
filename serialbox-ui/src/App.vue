@@ -6,7 +6,7 @@
       </router-link>
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
-    <div style="margin-top: 40px;">
+    <div style="margin-top: 0px;">
       <router-view/>
     </div>
   </div>
