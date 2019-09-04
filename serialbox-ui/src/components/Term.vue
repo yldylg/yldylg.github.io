@@ -32,7 +32,7 @@ export default {
       this.terminal.prompt = () => {
         this.terminal.write('\r\n$ ')
       }
-      this.terminal.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
+      this.terminal.write('\x1B[1;3;31mserialbox\x1B[0m $ ')
     }
   },
   created() {

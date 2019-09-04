@@ -13,8 +13,14 @@
 </template>
 
 <script>
+import VConsole from 'vconsole'
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      vConsole: new VConsole()
+    }
+  }
 }
 </script>
 
