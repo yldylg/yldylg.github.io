@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>七夕有你</title>
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=0.8, maximum-scale=1.1">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+    <script type="text/javascript" src="love.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffe;
+            font-size: 14px;
+            font-family: '微软雅黑', '宋体', sans-serif;
+            color: #231F20;
+            overflow: auto
+        }
+
+        a {
+            color: #000;
+            font-size: 14px;
+        }
+
+        #wrap {
+            position: relative;
+            margin: 0 auto;
+            width: 1100px;
+            height: 680px;
+            margin-top: 10px;
+        }
+
+        #text {
+            width: 450px;
+            height: 425px;
+            left: 45px;
+            top: 80px;
+            position: absolute;
+        }
+
+        #code {
+            display: none;
+            font-size: 18px;
+        }
+
+        #clock-box {
+            position: absolute;
+            left: 60px;
+            top: 600px;
+            font-size: 18px;
+            display: none;
+        }
+
+        #clock-box a {
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        #clock {
+            margin-left: 28px;
+        }
+
+        #clock .digit {
+            font-size: 32px;
+        }
+
+        #canvas {
+            margin: 0 auto;
+            width: 1100px;
+            height: 680px;
+        }
+
+        .hand {
+            cursor: pointer;
+        }
+
+        .say {
+            margin-left: 5px;
+            line-height: 1.8;
+        }
+
+        .space {
+            margin-right: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="audio" autoplay="autopaly" loop="loop">
+        <source src="AGoodHeart.mp3" type="audio/mp3" />
+    </audio>
+
+    <div style="width: 100%">
+        <div id="wrap">
+            <div id="text">
+                <div id="code">
+                    <span class="say" style="color: #003f64">小天使：</span><br>
+                    <p><span></span></p>
+                    <span class="say" style="color: #ff3500;">么么哒❤️</span><br>
+                    <span class="say" style="color: #178ccf">7月19上午在南京南站，小天使去上班，蛋去了上海</span><br>
+                    <span class="say" style="color: #ff00ff">本想着周五回宁，周六周日一起去嗨</span><br>
+                    <span class="say" style="color: #ff0000">可谁知新突然的冠疫情之下，南京危矣</span><br>
+                    <span class="say" style="color: #08a522">沪宁300公里，见不到小天使的每一天都不好过</span><br>
+                    <span class="say" style="color: #0092e7">幸好疫情很快稳定，渐渐看到了希望，蛋也想着回来</span><br>
+                    <span class="say" style="color: #c300ff">七夕，蛋却没能够在小天使的身边，难免有些遗憾</span><br>
+                    <span class="say" style="color: #ff7300">祝小天使七夕快乐，也希望帮蛋转达对爸爸生日的祝福</span><br>
+                    <span class="say" style="color: #178ccf">日子快了，蛋很快回来，而这一次回来，不再离开❤️</span><br>
+                    <p><span></span></p>
+                    <span class="say" style="color: #003f64"><span class="space"></span> -- 皮蛋蛋 • 七夕 --</span>
+                </div>
+            </div>
+
+            <div id="clock-box">
+                <span class="STYLE1"></span>
+                <span style="color: #8a1b0c">从7月19日上午8点47到现在</span>
+                <span class="STYLE1">已经……</span>
+                <div id="clock"></div>
+            </div>
+
+            <canvas id="canvas" width="1100" height="680"></canvas>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var canvas = $('#canvas');
+        var width = canvas.width();
+        var height = canvas.height();
+        canvas.attr("width", width);
+        canvas.attr("height", height);
+
+        var opts = {
+            seed: {
+                x: width / 2 - 20,
+                color: "#ce2020",
+                scale: 2
+            },
+
+            branch: [
+                [535, 680, 570, 250, 500, 200, 30, 100, [
+                    [540, 500, 455, 417, 340, 400, 13, 100, [
+                        [450, 435, 434, 430, 394, 395, 2, 40]
+                    ]],
+
+                    [550, 445, 600, 356, 680, 345, 12, 100, [
+                        [578, 400, 648, 409, 661, 426, 3, 80]
+                    ]],
+
+                    [539, 281, 537, 248, 534, 217, 3, 40],
+
+                    [546, 397, 413, 247, 328, 244, 9, 80, [
+                        [427, 286, 383, 253, 371, 205, 2, 40],
+                        [498, 345, 435, 315, 395, 330, 4, 60]
+                    ]],
+
+                    [546, 357, 608, 252, 678, 221, 6, 100, [
+                        [590, 293, 646, 277, 648, 271, 2, 80]
+                    ]]
+                ]]
+            ],
+
+            bloom: {
+                num: 700,
+                width: 1080,
+                height: 650,
+            },
+
+            footer: {
+                width: 1200,
+                height: 5,
+                speed: 10,
+            }
+        }
+
+        var tree = new Tree(canvas[0], width, height, opts);
+        var seed = tree.seed;
+        var foot = tree.footer;
+        var hold = 1;
+
+        canvas.click(function (e) {
+            var offset = canvas.offset();
+            var x = e.pageX - offset.left;
+            var y = e.pageY - offset.top;
+
+            if (seed.hover(x, y)) {
+                hold = 0;
+                canvas.unbind("click");
+                canvas.unbind("mousemove");
+                canvas.removeClass('hand');
+                playAutio();
+                console.log(123)
+            }
+        }).mousemove(function (e) {
+            var offset = canvas.offset();
+            var x = e.pageX - offset.left;
+            var y = e.pageY - offset.top;
+            canvas.toggleClass('hand', seed.hover(x, y));
+        });
+
+        function playAutio() {
+            document.getElementById('audio').play();
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms))
+        }
+
+        async function seedAnimate() {
+            seed.draw();
+            while (hold) {
+                await sleep(10);
+            }
+
+            while (seed.canScale()) {
+                seed.scale(0.95);
+                await sleep(10);
+            }
+
+            while (seed.canMove()) {
+                seed.move(0, 2);
+                foot.draw();
+                await sleep(10);
+            }
+        }
+
+        async function growAnimate() {
+            do {
+                tree.grow();
+                await sleep(10);
+            } while (tree.canGrow());
+        }
+
+        async function flowAnimate() {
+            do {
+                tree.flower(2);
+                await sleep(10);
+            } while (tree.canFlower());
+        }
+
+        async function moveAnimate() {
+            tree.snapshot("p1", 240, 0, 610, 680);
+            while (tree.move("p1", 500, 0)) {
+                foot.draw();
+                await sleep(10);
+            }
+            foot.draw();
+            tree.snapshot("p2", 500, 0, 610, 680);
+            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+            canvas.css("background", "#ffe");
+            await sleep(300);
+            canvas.css("background", "none");
+        }
+
+        async function jumpAnimate() {
+            while (true) {
+                tree.ctx.clearRect(0, 0, width, height);
+                tree.jump();
+                foot.draw();
+                await sleep(25);
+            }
+        }
+
+        function textAnimate() {
+            var together = new Date('2021-07-19 08:47:00');
+            $("#code").show().typewriter();
+            $("#clock-box").fadeIn(500);
+
+            setInterval(() => {
+                timeElapse(together);
+            }, 1000);
+        }
+
+        async function runAsync() {
+            await seedAnimate();
+            await growAnimate();
+            await flowAnimate();
+            await moveAnimate();
+            textAnimate();
+            await jumpAnimate();
+        }
+
+        runAsync();
+    </script>
+
+</body>
+
+</html>
