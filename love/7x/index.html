@@ -92,7 +92,7 @@
 
 <body>
     <audio id="audio" autoplay="autopaly" loop="loop">
-        <source src="AGoodHeart.mp3" type="audio/mp3" />
+        <source type="audio/mp3" />
     </audio>
 
     <div style="width: 100%">
@@ -109,7 +109,7 @@
                     <span class="say" style="color: #0092e7">幸好疫情很快稳定，渐渐看到了希望，蛋也想着回来</span><br>
                     <span class="say" style="color: #c300ff">七夕，蛋却没能够在小天使的身边，难免有些遗憾</span><br>
                     <span class="say" style="color: #ff7300">祝小天使七夕快乐，也希望帮蛋转达对爸爸生日的祝福</span><br>
-                    <span class="say" style="color: #178ccf">日子快了，蛋很快回来，而这一次回来，不再离开❤️</span><br>
+                    <span class="say" style="color: #ff3500">日子快了，蛋很快回来，而这一次回来，不再离开❤️</span><br>
                     <p><span></span></p>
                     <span class="say" style="color: #003f64"><span class="space"></span> -- 皮蛋蛋 • 七夕 --</span>
                 </div>
@@ -202,11 +202,16 @@
         });
 
         function playAutio() {
-            document.getElementById('audio').play();
+            var mp3s = ['AGoodHeart.mp3', 'WhatItIstoLove.mp3'];
+            var el = document.getElementById('audio');
+            el.src = mp3s[parseInt(Math.random() * 1000) % mp3s.length];
+            el.play();
         }
 
         function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms))
+            return new Promise(function(resolve) {
+                setTimeout(resolve, ms);
+            });
         }
 
         async function seedAnimate() {
@@ -269,7 +274,7 @@
             $("#code").show().typewriter();
             $("#clock-box").fadeIn(500);
 
-            setInterval(() => {
+            setInterval(function() {
                 timeElapse(together);
             }, 1000);
         }
